@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#arin {
+    position: fixed;
+    top: 15px;
+    
+    left: 50%;
+    z-index: 1000;
+    
+}
+
+#arin img {
+    height: 65px;
+    width: auto;
+    cursor: pointer;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+.menu-icon {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.catalogue-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 5em;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+}
+
+.section {
+    /* increased vertical space so each section appears longer */
+    margin-bottom: 100px;
+    padding: 30px 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.view-more {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.view-more:hover {
+    color: #fff;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(20% - 16px);
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #333;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: border 0.3s ease;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-name {
+    margin-top: 15px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .product-item {
+        width: calc(33.33% - 14px);
+    }
+    .product-grid {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .catalogue-title {
+        font-size: 3em;
+    }
+    .section-title {
+        font-size: 2.2em;
+    }
+    .product-grid {
+        justify-content: center;
+    }
+    .product-item {
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+    .product-image {
+        width: 120px;
+        height: 120px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .product-info h2 {
+        font-size: 1.8rem;
+    }
+    .product-info p {
+        font-size: 1rem;
+    }
+}
+
+#ui_ma {
+    position: fixed;
+    top: 15px;
+    color: white;
+    left: 20px;
+    z-index: 1000;
+}
+/* Add these new styles to your existing CSS file */
+
+.cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    z-index: 1000;
+}
+
+.cart-icon a {
+    text-decoration: none;
+    color: #333;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    min-width: 16px;
+    text-align: center;
+}
+
+.product-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.quantity-btn:hover {
+    background: #555;
+}
+
+.quantity {
+    font-size: 16px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.view-details {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-details:hover {
+    background: #555;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}

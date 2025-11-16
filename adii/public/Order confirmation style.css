@@ -1,0 +1,143 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main body styling with black background and serif font for elegance */
+body {
+    background-color: black;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 20px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header container */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 60px;
+    font-size: 1rem;
+}
+
+/* Menu icon bars */
+.menu-icon .bar {
+    width: 28px;
+    height: 3px;
+    background: white;
+    margin-bottom: 6px;
+}
+.menu-icon .bar:last-child {
+    margin-bottom: 0;
+}
+
+/* Cart link styling */
+.cart-link {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: serif;
+}
+
+/* Center logo */
+.logo {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: 6px;
+    user-select: none;
+}
+
+/* Main "Thank you!" styling with italic and large font */
+main h1 {
+    font-family: "Brush Script MT", cursive, serif;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 3.5rem;
+    margin-bottom: 32px;
+    user-select: none;
+}
+
+/* Main paragraph styling */
+main p {
+    max-width: 480px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 100px;
+    user-select: none;
+}
+
+/* Footer styling */
+footer {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Image styles - positioned absolutely with fixed sizes */
+/* Top-right circular image */
+.top-right-image {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Bottom-left exploded gears image */
+.bottom-left-image {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    width: 220px;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+    z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    main h1 {
+        font-size: 2.5rem;
+    }
+    main p {
+        font-size: 1rem;
+        max-width: 90vw;
+    }
+    .top-right-image {
+        width: 100px;
+        height: 100px;
+        right: 20px;
+        top: 15px;
+    }
+    .bottom-left-image {
+        width: 150px;
+        max-height: 150px;
+        left: 20px;
+        bottom: 15px;
+    }
+    header {
+        margin-bottom: 40px;
+    }
+}

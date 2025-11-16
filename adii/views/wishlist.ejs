@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist - Heure Haute</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/Wishlist style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <section class="wishlist-container">
+      <h1>My Wishlist</h1>
+      <div class="wishlist-items" id="wishlistItems">
+        <p>Your wishlist is empty. <a href="/catalogue">Browse products</a></p>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    // TODO: Implement wishlist functionality with API
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Wishlist page loaded');
+    });
+  </script>
+</body>
+</html>

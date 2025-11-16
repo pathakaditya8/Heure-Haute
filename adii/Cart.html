@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="Cart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="Videos/PinDown.io_@luxurytimeIndia_1758015208.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header>
+        <a href="catalogue.html" class="back-button">
+            <span>←</span> Continue Shopping
+        </a>
+        <div class="logo">
+            <img src="Photos/Untitled_design-removebg-preview.png" alt="Logo">
+            <h1>Shopping Cart</h1>
+        </div>
+    </header>
+
+    <main class="content">
+        <div id="cart-empty" class="cart-empty hidden">
+            <h2>Your cart is empty</h2>
+            <p>Add items from the catalogue to start shopping</p>
+            <a href="catalogue.html" class="continue-shopping">Browse Catalogue</a>
+        </div>
+
+        <div id="cart-content" class="cart-content">
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <div class="total-price">
+                    <span>Total:</span>
+                    <strong id="total-amount">$0.00</strong>
+                </div>
+                <button id="checkout-button" class="checkout-button">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        //data load kra local storage k through
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+        // Fetch product details from JSON
+        async function fetchProducts() {
+            try {
+                const response = await fetch('product-details.json');
+                const data = await response.json();
+                return data.products;
+            } catch (error) {
+                console.error('Error loading products:', error);
+                return {};
+            }
+        }
+
+        // Load and display cart items
+        async function loadCartItems() {
+            const products = await fetchProducts();
+            const cartContainer = document.getElementById('cart-items');
+            const cartEmpty = document.getElementById('cart-empty');
+            const cartContent = document.getElementById('cart-content');
+            let total = 0;
+
+            // Clear existing items
+            cartContainer.innerHTML = '';
+
+            // Check if cart is empty
+            if (Object.keys(cart).length === 0) {
+                cartEmpty.classList.remove('hidden');
+                cartContent.classList.add('hidden');
+                return;
+            }
+
+            cartEmpty.classList.add('hidden');
+            cartContent.classList.remove('hidden');
+
+            // Display each item in cart
+            for (const [id, quantity] of Object.entries(cart)) {
+                const product = products[id];
+                if (product && quantity > 0) {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    const itemTotal = parseFloat(product.price.replace('$', '').replace(',', '')) * quantity;
+                    total += itemTotal;
+
+                    itemDiv.innerHTML = `
+                        <div class="item-image">
+                            <img src="${product.mainImage}" alt="${product.name}">
+                        </div>
+                        <div class="item-details">
+                            <h3>${product.name}</h3>
+                            <p class="item-price">${product.price}</p>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="updateQuantity('${id}', 'decrease')">-</button>
+                                <span class="quantity">${quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity('${id}', 'increase')">+</button>
+                            </div>
+                            <button class="remove-btn" onclick="removeItem('${id}')">Remove</button>
+                        </div>
+                        <div class="item-total">
+                            $${itemTotal.toFixed(2)}
+                        </div>
+                    `;
+
+                    cartContainer.appendChild(itemDiv);
+                }
+            }
+
+            document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Update item quantity
+        function updateQuantity(id, action) {
+            if (!cart[id]) cart[id] = 0;
+            
+            if (action === 'increase') {
+                cart[id]++;
+            } else if (action === 'decrease' && cart[id] > 0) {
+                cart[id]--;
+                if (cart[id] === 0) {
+                    delete cart[id];
+                }
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCartItems();
+        }
+
+        // item cart se remove krii
+        function removeItem(id) {
+            delete cart[id];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCartItems();
+        }
+
+        document.getElementById('checkout-button').addEventListener('click', () => {
+            if (Object.keys(cart).length > 0) {
+                
+                alert('Proceeding to checkout...');
+            } else {
+                alert('Your cart is empty');
+            }
+        });
+
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', loadCartItems);
+    </script>
+</body>
+</html>

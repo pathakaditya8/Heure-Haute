@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Watch Product Page</title>
+    <link rel="stylesheet" href="/product-style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="hamburger" aria-label="Menu icon" role="img">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo" aria-label="Logo" id="arin">
+                <a href="/catalogue">
+                    <img src="/Photos/Untitled_design-removebg-preview.png" alt="Logo">
+                </a>
+            </div>
+            <div style="width:24px"></div>
+        </header>
+
+        <main class="container">
+            <div class="main-image" role="img" aria-label="Main product image">
+                <!-- Image will be loaded dynamically -->
+            </div>
+
+            <div class="thumbnails" aria-label="Gallery thumbnails">
+                <div class="thumbnail" tabindex="0"></div>
+                <div class="thumbnail" tabindex="0"></div>
+                <div class="thumbnail" tabindex="0"></div>
+                <div class="thumbnail" tabindex="0"></div>
+                <div class="thumbnail" tabindex="0"></div>
+            </div>
+
+            <h1>Loading...</h1>
+            <div class="subtitle"></div>
+
+            <div class="narrative"></div>
+
+            <div class="price-container">
+                <div class="price-label">Price: Loading...</div>
+                <div class="colors" aria-label="Color options">
+                    <div class="color-box color-grey" tabindex="0" aria-label="Grey"></div>
+                    <div class="color-box color-yellow" tabindex="0" aria-label="Gold"></div>
+                    <div class="color-box color-dark" tabindex="0" aria-label="Black"></div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" onclick="addToCart()">Add to Cart</button>
+                <button type="button" onclick="enquire()">Enquire</button>
+            </div>
+
+            <section class="specs">
+                <strong>Technical Specifications</strong>
+                <ul>
+                    <!-- Specifications will be loaded dynamically -->
+                </ul>
+            </section>
+
+            <section class="info-section">
+                <div class="info-col">
+                    <strong>Authenticity Guaranteed</strong>
+                    <p>Each timepiece comes with a certificate of authenticity and full documentation.</p>
+                </div>
+                <div class="info-col">
+                    <strong>Expert Verification</strong>
+                    <p>Every watch undergoes rigorous inspection by our master watchmakers.</p>
+                </div>
+                <div class="info-col">
+                    <strong>Documentation Included</strong>
+                    <ul id="docList">
+                        <!-- Documentation details will be loaded dynamically -->
+                    </ul>
+                </div>
+            </section>
+
+            <section class="aftercare">
+                <h2>Aftercare & Service</h2>
+                <div class="aftercare-content">
+                    <!-- Aftercare details will be loaded dynamically -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        let currentProduct = null;
+        
+        async function loadProductDetails() {
+            try {
+                const productId = '<%= productId %>';
+                
+                const response = await fetch(`/api/products/${productId}`);
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error('Product not found');
+                }
+
+                currentProduct = data.data;
+
+                // Update content
+                document.querySelector('h1').textContent = currentProduct.name;
+                document.querySelector('.subtitle').textContent = currentProduct.category;
+                document.querySelector('.narrative').textContent = currentProduct.description;
+                document.querySelector('.price-label').textContent = `Price: ₹${currentProduct.price}`;
+                
+                // Update main image
+                const mainImage = document.querySelector('.main-image');
+                mainImage.innerHTML = `<img src="${currentProduct.image}" alt="${currentProduct.name}">`;
+
+                // Update specifications (use stock and rating as placeholder specs)
+                const specsList = document.querySelector('.specs ul');
+                specsList.innerHTML = `
+                    <li>Category: ${currentProduct.category}</li>
+                    <li>Price: ₹${currentProduct.price}</li>
+                    <li>Stock: ${currentProduct.stock} units available</li>
+                    <li>Rating: ${currentProduct.rating} / 5 stars</li>
+                `;
+
+                // Update documentation
+                const docList = document.getElementById('docList');
+                docList.innerHTML = `
+                    <li>Certificate of Authenticity</li>
+                    <li>Original Packaging</li>
+                    <li>Warranty Card</li>
+                    <li>Product Documentation</li>
+                `;
+
+                // Update aftercare
+                const aftercareContent = document.querySelector('.aftercare-content');
+                aftercareContent.innerHTML = `
+                    <p><strong>Warranty:</strong> Comprehensive warranty coverage</p>
+                    <p><strong>Service:</strong> Professional maintenance available</p>
+                    <p><strong>Support:</strong> 24/7 customer support for all inquiries</p>
+                `;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.querySelector('main').innerHTML = `
+                    <div class="error-message">
+                        <h2>Product Not Found</h2>
+                        <p>Sorry, we couldn't find the product you're looking for.</p>
+                        <a href="/catalogue">Return to Catalogue</a>
+                    </div>
+                `;
+            }
+        }
+
+        function addToCart() {
+            if (!currentProduct) return;
+            
+            const userId = localStorage.getItem('userId') || 'guest-' + Date.now();
+            localStorage.setItem('userId', userId);
+
+            fetch('/api/cart/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, productId: currentProduct._id, quantity: 1 })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`${currentProduct.name} added to cart!`);
+                    window.location.href = '/cart';
+                }
+            });
+        }
+
+        function enquire() {
+            alert('Thank you for your interest! Please contact us at heurehaute@gmail.com');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProductDetails);
+    </script>
+</body>
+</html>

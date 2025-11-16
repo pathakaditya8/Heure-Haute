@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ek stylish, modern font hai */
+    background-image: url("Photos/login_signup.png");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Pura viewport ki height */
+    overflow: hidden; /* Agar content jyada ho toh scroll na ho */
+}
+
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* background: linear-gradient(to bottom, #1a1a1a, #0a0a0a); Gehrai ke liye dark gradient */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Logo ko upar align karo */
+    
+    box-sizing: border-box;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.logo {
+    position: absolute;
+    top: 30px; /* Zarurat ke hisab se adjust karo */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    font-weight: 200; /* Patla font weight, elegant lagta hai */
+    color: rgba(255, 255, 255, 0.7); /* Thoda transparent safed rang */
+    letter-spacing: 5px;
+    z-index: 2; /* Logo dusre elements ke upar rahe agar zarurat ho */
+}
+
+
+/* Ye apne Track Package style.css file me add karo */
+
+header {
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.menu-icon {
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.menu-link {
+    text-decoration: none; /* Hamburger ke niche wali line hatao */
+    color: white;
+    display: block; /* Pura menu icon clickable ho jaye */
+}
+
+/* Logo ki position header ke hisab se update karo */
+.logo {
+    position: static; /* Absolute se static position me badlo */
+    transform: none; /* Transform hata do */
+    font-size: 4em;
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 5px;
+    z-index: 2;
+    margin: 0 auto; /* Logo ko header me center karo */
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.9); /* Card ke liye dark aur semi-transparent background */
+    border-radius: 12px; /* Thoda jyada gol kinare */
+    padding: 40px; /* Aur padding daal do */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Gehrai ke liye strong shadow */
+    text-align: center;
+    width: 400px; /* Fixed width for consistency */
+    max-width: 90%; /* Responsive up to 90% of screen width */
+    position: relative;
+    z-index: 3; /* Ensure card is above the watch image */
+    margin-top: 100px; /* Push the card down from the top */
+    backdrop-filter: blur(8px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    
+}
+
+.card-title {
+    color: #fff;
+    font-size: 1.8em; /* Slightly larger title */
+    margin-bottom: 30px; /* More space below the title */
+    font-weight: 600; /* Semi-bold */
+}
+
+.form-group {
+    margin-bottom: 30px; /* Space below the input group */
+    text-align: left; /* Align label to the left */
+}
+
+.tracking-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.8); /* Lighter grey for label */
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.tracking-input {
+    width: calc(100% - 20px);
+    padding: 15px; 
+    background-color: rgba(255, 255, 255, 0.1); 
+    border: none;
+    border-radius: 8px; 
+    color: #fff;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    outline: none; /* Remove default outline */
+    transition: background-color 0.3s ease;
+}
+
+.tracking-input::placeholder {
+    color: rgba(255, 255, 255, 0.4); /* Fainter placeholder text */
+}
+
+.tracking-input:focus {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly brighter on focus */
+}
+
+.next-button {
+    background-color: #333; 
+    color: #fff;
+    padding: 14px 30px; 
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+}
+input[type="text"] {
+    text-align: center;
+}
+.next-button:hover {
+    background-color: #555; /* Lighter on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.watch-image {
+    position: absolute;
+    bottom: -10%; /* watch neche*/
+    left: 50%;
+    transform: translateX(-50%) scale(1.4); /* Make the watch bigger */
+    width: 600px; /* Base width */
+    height: 600px; /* Base height */
+    background-image: url('https://i.imgur.com/example-watch.png'); /* **Replace with your watch image URL** */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3; /* Make it more subtle */
+    z-index: 1; /* Ensure it's behind the card */
+    filter: brightness(0.8) contrast(1.2); /* Adjust brightness and contrast */
+    pointer-events: none; /* Make sure it doesn't interfere with clicks */
+}
+
+/* Add some reflective surfaces at the bottom for aesthetic */
+.background-container::before,
+.background-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 150px; /* Height of the reflective surface */
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle white reflection */
+    filter: blur(50px); /* Soft blur */
+    z-index: 0;
+}
+
+.background-container::before {
+    left: 0;
+    transform: skewY(-5deg); /* Slight skew */
+}
+
+.background-container::after {
+    right: 0;
+    transform: skewY(5deg); /* Slight skew in opposite direction */
+}
+#arin {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+#arin img {
+  height: 65px;
+  width: auto;
+  cursor: pointer;
+}

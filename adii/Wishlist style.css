@@ -1,0 +1,84 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: black;
+  color: white;
+  background: url('Photos/wishlist.png') no-repeat center center/cover;
+  filter: brightness(0.6);
+  min-height: 100vh;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+
+.menu {
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color:white
+}
+
+.wishlist {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+}
+
+.wishlist h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid white;
+}
+
+.product:last-child {
+  border-bottom: none;
+}
+
+.product img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  margin-right: 20px;
+  object-fit: cover;
+  background: #fff;
+}
+
+.product-info h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.product-info p {
+  font-size: 14px;
+  color: #ccc;
+}

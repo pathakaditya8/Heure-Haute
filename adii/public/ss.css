@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 60px;
+}
+#yellowSquare {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  margin: 50px auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #ccc;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  display: block;
+}
+#yellowSquare:hover {
+  box-shadow: 0 4px 16px #999;
+}
+
+#yellowSquare:active {
+  box-shadow: 0 2px 8px #999;
+  transform: scale(0.95);
+}

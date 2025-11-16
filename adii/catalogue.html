@@ -1,0 +1,152 @@
+``<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue</title>
+    <link rel="stylesheet" href="Catalogue style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="Settings.html" class="menu-link">
+                <div id="ui_ma" class="menu-icon">&#9776;</div>
+                <div id="arin">
+                    <img src="Photos/Untitled_design-removebg-preview.png" alt="Heure Haute Logo"/>
+                </div>
+            </a>
+            <div class="cart-icon">
+                <a href="Cart.html">
+                    <span class="cart-count">0</span>
+                    🛒
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <h1 class="catalogue-title">CATALOGUE</h1>
+            <div id="product-sections"></div>
+        </main>
+
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+        
+        function updateCartCount() {
+            const count = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+            document.querySelector('.cart-count').textContent = count;
+        }
+
+        async function loadProducts() {
+            try {
+                const response = await fetch('products.json');
+                const data = await response.json();
+                const container = document.getElementById('product-sections');
+
+                data.categories.forEach(category => {
+                    const section = createSection(category);
+                    container.appendChild(section);
+                });
+
+                // Update quantity displays from cart
+                Object.entries(cart).forEach(([productId, quantity]) => {
+                    const quantityElement = document.getElementById(`quantity-${productId}`);
+                    if (quantityElement) {
+                        quantityElement.textContent = quantity;
+                    }
+                });
+
+                updateCartCount();
+            } catch (error) {
+                handleLoadError(error);
+            }
+        }
+
+        function createSection(category) {
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = `
+                <div class="section-header">
+                    <h2 class="section-title">${category.name}</h2>
+                </div>
+                <div class="product-grid">
+                    ${category.products.map(product => `
+                        <div class="product-item">
+                            <div class="product-image">
+                                <img src="${product.image}" 
+                                     alt="${product.name}"
+                                     loading="lazy"
+                                     onerror="this.onerror=null; this.src='Photos/placeholder.jpg';">
+                            </div>
+                            <span class="product-name">${product.name}</span>
+                            <div class="product-controls">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn minus" onclick="updateQuantity('${product.id}', 'decrease')">-</button>
+                                    <span class="quantity" id="quantity-${product.id}">${cart[product.id] || 0}</span>
+                                    <button class="quantity-btn plus" onclick="updateQuantity('${product.id}', 'increase')">+</button>
+                                </div>
+                                <button class="view-details" onclick="window.location.href='Product Description Page.html?id=${product.id}&category=${category.id}'">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            return section;
+        }
+
+        function updateQuantity(productId, action) {
+            if (!cart[productId]) {
+                cart[productId] = 0;
+            }
+
+            if (action === 'increase') {
+                cart[productId]++;
+                showNotification('Product added to cart');
+            } else if (action === 'decrease' && cart[productId] > 0) {
+                cart[productId]--;
+                showNotification('Product removed from cart');
+                if (cart[productId] === 0) {
+                    delete cart[productId];
+                }
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            const quantityElement = document.getElementById(`quantity-${productId}`);
+            if (quantityElement) {
+                quantityElement.textContent = cart[productId] || 0;
+            }
+            
+            updateCartCount();
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 100000);
+        }
+-
+        function handleLoadError(error) {
+            const container = document.getElementById('product-sections');
+            container.innerHTML = `
+                <div class="error-message">
+                    <p>Sorry, we couldn't load the products. Please try again later.</p>
+                    <button onclick="loadProducts()">Retry</button>
+                </div>
+            `;
+            console.error('Error loading products:', error);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</body>
+</html>

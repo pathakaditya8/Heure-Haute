@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/Cart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="/Videos/PinDown.io_@luxurytimeIndia_1758015208.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header>
+        <a href="/catalogue" class="back-button">
+            <span>←</span> Continue Shopping
+        </a>
+        <div class="logo">
+            <img src="/Photos/Untitled_design-removebg-preview.png" alt="Logo">
+            <h1>Shopping Cart</h1>
+        </div>
+        <div id="userGreeting" style="text-align: right; font-size: 12px; color: #999; position: absolute; top: 15px; right: 30px;"></div>
+    </header>
+
+    <main class="content">
+        <div id="cart-empty" class="cart-empty hidden">
+            <h2>Your cart is empty</h2>
+            <p>Add items from the catalogue to start shopping</p>
+            <a href="/catalogue" class="continue-shopping">Browse Catalogue</a>
+        </div>
+
+        <div id="cart-content" class="cart-content">
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <div class="total-price">
+                    <span>Total:</span>
+                    <strong id="total-amount">₹0.00</strong>
+                </div>
+                <button id="checkout-button" class="checkout-button">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let userId = localStorage.getItem('userId') || 'guest-' + Date.now();
+        localStorage.setItem('userId', userId);
+        let cart = null;
+
+        // Display user greeting
+        function displayUserGreeting() {
+            const userGreeting = document.getElementById('userGreeting');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userEmail = localStorage.getItem('userId');
+            
+            if (isLoggedIn && userEmail) {
+                userGreeting.innerHTML = `Welcome, <strong>${userEmail}</strong> | <a href="/login" onclick="logout(event)" style="color: #d4af37; text-decoration: none;">Logout</a>`;
+            } else {
+                userGreeting.innerHTML = `<a href="/login" style="color: #d4af37; text-decoration: none;">Login / Sign Up</a>`;
+            }
+        }
+
+        function logout(e) {
+            e.preventDefault();
+            localStorage.removeItem('userId');
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = '/';
+        }
+
+        // Load cart from API
+        async function loadCartItems() {
+            try {
+                const response = await fetch(`/api/cart/${userId}`);
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    cart = data.data;
+                    displayCart();
+                }
+            } catch (error) {
+                console.error('Error loading cart:', error);
+            }
+        }
+
+        // Display cart items on page
+        function displayCart() {
+            const cartContainer = document.getElementById('cart-items');
+            const cartEmpty = document.getElementById('cart-empty');
+            const cartContent = document.getElementById('cart-content');
+
+            // Clear existing items
+            cartContainer.innerHTML = '';
+
+            // Check if cart is empty
+            if (!cart.items || cart.items.length === 0) {
+                cartEmpty.classList.remove('hidden');
+                cartContent.classList.add('hidden');
+                return;
+            }
+
+            cartEmpty.classList.add('hidden');
+            cartContent.classList.remove('hidden');
+
+            // Display each item in cart
+            let total = 0;
+            cart.items.forEach(item => {
+                // Skip items without proper product data
+                if (!item.productId) {
+                    return;
+                }
+                
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                const itemPrice = item.price || 0;
+                const itemQty = item.quantity || 1;
+                const itemTotal = itemPrice * itemQty;
+                total += itemTotal;
+
+                const productName = item.productId.name || 'Unknown Product';
+                const productId = item.productId._id || '';
+                const productImage = item.productId.image || '/Photos/placeholder.jpg';
+
+                itemDiv.innerHTML = `
+                    <div class="item-image">
+                        <img src="${productImage}" alt="${productName}">
+                    </div>
+                    <div class="item-details">
+                        <h3>${productName}</h3>
+                        <p class="item-price">₹${itemPrice}</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('${productId}', ${itemQty - 1})">-</button>
+                            <span class="quantity">${itemQty}</span>
+                            <button class="quantity-btn" onclick="updateQuantity('${productId}', ${itemQty + 1})">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem('${productId}')">Remove</button>
+                    </div>
+                    <div class="item-total">
+                        ₹${itemTotal.toFixed(2)}
+                    </div>
+                `;
+
+                cartContainer.appendChild(itemDiv);
+            });
+
+            document.getElementById('total-amount').textContent = `₹${total.toFixed(2)}`;
+        }
+
+        // Update item quantity
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) {
+                removeItem(productId);
+                return;
+            }
+
+            fetch('/api/cart/update', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, productId, quantity: newQuantity })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    cart = data.data;
+                    displayCart();
+                } else {
+                    console.error('Error updating cart:', data.message);
+                    loadCartItems();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                loadCartItems();
+            });
+        }
+
+        // Remove item from cart
+        function removeItem(productId) {
+            fetch('/api/cart/remove', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, productId })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    cart = data.data;
+                    displayCart();
+                } else {
+                    console.error('Error removing item:', data.message);
+                    loadCartItems();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                loadCartItems();
+            });
+        }
+
+        // Checkout
+        document.getElementById('checkout-button').addEventListener('click', () => {
+            if (cart.items && cart.items.length > 0) {
+                window.location.href = '/checkout';
+            } else {
+                alert('Your cart is empty');
+            }
+        });
+
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayUserGreeting();
+            loadCartItems();
+        });
+    </script>
+</body>
+</html>

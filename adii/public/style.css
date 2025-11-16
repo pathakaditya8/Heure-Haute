@@ -1,0 +1,249 @@
+@font-face {
+  font-family: 'm_d_f';
+  src: url('./Mys/m_d_f.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'lmr';
+  src: url('./Mys/lmr.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'mys';
+ src:url('./Mys/MySoul-Regular.ttf ') format('truetype');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+  font-family: 'man';
+  src: url('./Mys/Maname-Regular.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+body {
+  background-color: #000;
+  color: #ffffff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.7;
+  
+
+}
+
+
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 1000;
+}
+
+.menu-icon {
+  width: 25px;
+  height: 2px;
+  background-color: #fff;
+  margin: 5px ;
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.bar {
+  width: 25px;
+  height: 2px;
+  background-color: #fff;
+  margin: 5px 0;
+}
+
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+}
+
+.content-section {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+   height: 1000px;
+  gap: 0;
+  
+}
+
+.content-section.reverse {
+  flex-direction: row-reverse;
+  display: flex;
+}
+.text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 4vw 8vw; 
+}
+
+.text-content h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px; 
+  line-height: 1.2;
+}
+
+.text-content p,
+.text-content address {
+  text-align: justify;
+}
+
+.image-content {
+  flex: 1;
+  position: relative;
+  min-height: 70vh; 
+  background-color: #1a1a1a;
+  
+ 
+-webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+  mask-image: linear-gradient(to left, black 60%, transparent 100%);
+}
+
+
+.content-section.reverse .image-content {
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+  mask-image: linear-gradient(to left, black 60%, transparent 100%);
+}
+
+.image-content video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Specific adjustments for the 'A Legacy of Excellence' section */
+.content-section.legacy {
+  /* make the whole section taller */
+  height: 1300px;
+}
+
+.content-section.legacy .text-content {
+  /* give the text column less width so it appears narrower */
+  flex: 0 0 42%;
+  max-width: 42%;
+  /* add extra vertical padding so paragraphs can flow longer */
+  padding: 6vw 6vw;
+  justify-content: flex-start; /* let content begin higher so there's more visible text length */
+}
+
+.content-section.legacy .image-content {
+  /* allow image area to occupy remaining space */
+  flex: 1 1 58%;
+}
+
+
+
+@media (max-width: 768px) {
+  .content-section,
+  .content-section.reverse {
+    flex-direction: column; 
+    flex: content;
+  }
+  .image-content, .content-section.reverse .image-content {
+    clip-path: none;
+    min-height: 300px;
+  }
+  
+  .text-content h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .text-content p,
+  .text-content address {
+    text-align: left;
+    flex: content;
+    justify-content: center;
+  }
+}
+
+#arin {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+#arin img {
+  height: 65px;
+  width: auto;
+  cursor: pointer;
+}
+
+#dhruv {
+  left: -15%;
+  top: -20%;
+  display: flex;
+  height: 900px;
+  width: auto;
+  cursor: pointer;
+}
+#lo{
+    font-family: "My Soul", cursive;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 77px;
+  text-align: center;
+  color: white;
+}
+#so{
+    
+
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  text-align: center;
+}
+
+
+#yo{
+  text-align: center;
+  font-size: 48px;
+}
+.pathak{
+ height: 1000px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

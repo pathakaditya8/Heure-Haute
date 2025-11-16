@@ -1,0 +1,384 @@
+{
+  "products": {
+    "ev1": {
+      "name": "Classic Chronograph",
+      "subtitle": "Precision Engineering Meets Timeless Design",
+      "price": "₹12,500",
+      "mainImage": "https://imgs.search.brave.com/B0BK2gSOrqPCMCt-BKpwsy0sQYg57p030Qp2nONqrKo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9icm9u/Y29sb3Iuc3dpc3Mv/YXNzZXRzL2ltZy9M/ZWFybi1hcnRpY2xl/cy9Ib3ctdG8tcGhv/dG9zL1RoZS11bHRp/bWF0ZS1ndWlkZS10/by1waG90b2dyYXBo/LWx1eHVyeS13YXRj/aGVzL19jb250ZW50/V2l0aFNoYXJlQmFy/MjMvVGhlLXVsdGlt/YXRlLWd1aWRlLXRv/LXBob3RvZ3JhcGgt/bHV4dXJ5LXdhdGNo/ZXMtMDEtMS1kaWZm/LXJlY2h0cy5qcGc",
+      "thumbnails": ["Photos/classic1.jpg", "Photos/classic2.jpg", "Photos/classic3.jpg", "Photos/classic4.jpg", "Photos/classic5.jpg"],
+      "description": "A masterpiece of horological engineering, the Classic Chronograph represents the pinnacle of traditional watchmaking. Each piece is meticulously crafted by our master watchmakers, combining centuries-old techniques with modern precision.",
+      "specifications": [
+        "Movement: Caliber JCAM19, Triple-axis tourbillon",
+        "Case: 18K Rose Gold, 44mm diameter",
+        "Crystal: Anti-reflective sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Original Box and Papers",
+        "5-Year Warranty Card",
+        "Service History Record"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Complimentary first service",
+        "support": "24/7 concierge support"
+      }
+    },
+    "ev2": {
+      "name": "Heritage Automatic",
+      "subtitle": "Traditional Craftsmanship Redefined",
+      "price": "$8,900",
+      "mainImage": "https://imgs.search.brave.com/YsXz92Xp_zLcRnhPGWo3rj-oq7F1vUougnErUikOkaE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzAy/NzgvOTcyMy8zNTAx/L2ZpbGVzLzMzLVR1/ZG9yLUJyYW5kcy5q/cGc_dj0xNjUxMDA1/Mzkw",
+      "thumbnails": ["Photos/heritage1.jpg", "Photos/heritage2.jpg", "Photos/heritage3.jpg", "Photos/heritage4.jpg", "Photos/heritage5.jpg"],
+      "description": "The Heritage Automatic embodies the spirit of classic watchmaking with modern reliability. Its self-winding movement and timeless design make it the perfect everyday companion.",
+      "specifications": [
+        "Movement: In-house automatic caliber",
+        "Case: Stainless steel, 40mm",
+        "Crystal: Domed sapphire",
+        "Water Resistance: 100m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Original Box and Papers",
+        "3-Year Warranty Card"
+      ],
+      "aftercare": {
+        "warranty": "3-year international warranty",
+        "service": "First service at special rates",
+        "support": "Global service network"
+      }
+    },
+    "ev3": {
+      "name": "Classic Chronograph",
+      "subtitle": "Precision Engineering Meets Timeless Design",
+      "price": "$12,500",
+      "mainImage": "https://imgs.search.brave.com/I9HFC68CcGgD2AqvoJnFVzWf6mkq3FmdIoR_YBKiAuU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Ym9ic3dhdGNoZXMu/Y29tL3JvbGV4LWJs/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjIvMDkvT3Jpc19E/aXZlclNpeHR5Rml2/ZV81RDNfOTQ0OS00/LUVkaXQtNi0xMDI0/eDY4My5qcGc",
+      "thumbnails": ["Photos/classic1.jpg", "Photos/classic2.jpg", "Photos/classic3.jpg", "Photos/classic4.jpg", "Photos/classic5.jpg"],
+      "description": "A masterpiece of horological engineering, the Classic Chronograph represents the pinnacle of traditional watchmaking. Each piece is meticulously crafted by our master watchmakers, combining centuries-old techniques with modern precision.",
+      "specifications": [
+        "Movement: Caliber JCAM19, Triple-axis tourbillon",
+        "Case: 18K Rose Gold, 44mm diameter",
+        "Crystal: Anti-reflective sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Original Box and Papers",
+        "5-Year Warranty Card",
+        "Service History Record"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Complimentary first service",
+        "support": "24/7 concierge support"
+      }
+    },
+    "ev4": {
+      "name": "Classic Chronograph",
+      "subtitle": "Precision Engineering Meets Timeless Design",
+      "price": "$12,500",
+      "mainImage": "https://imgs.search.brave.com/5eUQ0j_srjkk7Y2Tu02nnmR0sW1szNYhtWUYiL3CLD0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzAy/NzgvOTcyMy8zNTAx/L2ZpbGVzL01vc2Vy/LUVuZGVhdm91ci1Q/ZXJwZXR1YWwtQ2Fs/ZW5kYXItMl8xNjBl/ZThlNC1hZjcyLTQw/NGQtOGM3ZC01YThj/YmI2NTg5NzkuanBn/P3Y9MTcwMDE0OTIz/NQ",
+      "thumbnails": ["Photos/classic1.jpg", "Photos/classic2.jpg", "Photos/classic3.jpg", "Photos/classic4.jpg", "Photos/classic5.jpg"],
+      "description": "A masterpiece of horological engineering, the Classic Chronograph represents the pinnacle of traditional watchmaking. Each piece is meticulously crafted by our master watchmakers, combining centuries-old techniques with modern precision.",
+      "specifications": [
+        "Movement: Caliber JCAM19, Triple-axis tourbillon",
+        "Case: 18K Rose Gold, 44mm diameter",
+        "Crystal: Anti-reflective sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Original Box and Papers",
+        "5-Year Warranty Card",
+        "Service History Record"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Complimentary first service",
+        "support": "24/7 concierge support"
+      }
+    },
+    "ev5": {
+      "name": "Classic Chronograph",
+      "subtitle": "Precision Engineering Meets Timeless Design",
+      "price": "$12,500",
+      "mainImage": "https://imgs.search.brave.com/XfZwHUGLzLuqO31ODj8Rgi6f935OMyo4ARdPpmJOCeo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9icm9u/Y29sb3Iuc3dpc3Mv/YXNzZXRzL2ltZy9M/ZWFybi1hcnRpY2xl/cy9Ib3ctdG8tcGhv/dG9zL1RoZS11bHRp/bWF0ZS1ndWlkZS10/by1waG90b2dyYXBo/LWx1eHVyeS13YXRj/aGVzL19jb250ZW50/V2l0aFNoYXJlQmFy/MTMvVGhlLXVsdGlt/YXRlLWd1aWRlLXRv/LXBob3RvZ3JhcGgt/bHV4dXJ5LXdhdGNo/ZXMtMTItbnVyLXBp/Y28tZnJlc25lbC5q/cGc",
+      "thumbnails": ["Photos/classic1.jpg", "Photos/classic2.jpg", "Photos/classic3.jpg", "Photos/classic4.jpg", "Photos/classic5.jpg"],
+      "description": "A masterpiece of horological engineering, the Classic Chronograph represents the pinnacle of traditional watchmaking. Each piece is meticulously crafted by our master watchmakers, combining centuries-old techniques with modern precision.",
+      "specifications": [
+        "Movement: Caliber JCAM19, Triple-axis tourbillon",
+        "Case: 18K Rose Gold, 44mm diameter",
+        "Crystal: Anti-reflective sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Original Box and Papers",
+        "5-Year Warranty Card",
+        "Service History Record"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Complimentary first service",
+        "support": "24/7 concierge support"
+      }
+    },
+    "col1": {
+      "name": "Vintage Series",
+      "subtitle": "A Tribute to Timeless Elegance",
+      "price": "$15,200",
+      "mainImage": "https://imgs.search.brave.com/2qu2Z8HDA-jKiSchxeeKu64OCm-NKrQUJZu5jVQRtxg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Ym9ic3dhdGNoZXMu/Y29tL3JvbGV4LWJs/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjIvMDkvSU1HXzAx/MTYtMi1FZGl0LTIt/MTAyNHg2ODMuanBn",
+      "thumbnails": ["Photos/vintage1.jpg", "Photos/vintage2.jpg", "Photos/vintage3.jpg", "Photos/vintage4.jpg", "Photos/vintage5.jpg"],
+      "description": "Drawing inspiration from the golden age of watchmaking, the Vintage Series combines historical aesthetics with modern engineering excellence.",
+      "specifications": [
+        "Movement: Hand-wound mechanical",
+        "Case: 18K Yellow Gold, 38mm",
+        "Crystal: Box-shaped sapphire",
+        "Water Resistance: 50m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Vintage-Style Presentation Box",
+        "Limited Edition Certificate",
+        "5-Year Warranty Card"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Specialized vintage service",
+        "support": "Expert consultation service"
+      }
+    },
+    "col2": {
+      "name": "Vintage Series",
+      "subtitle": "A Tribute to Timeless Elegance",
+      "price": "$15,200",
+      "mainImage": "https://imgs.search.brave.com/9gxKJYIDzWFQHnicUZxeThnr-3ClRU58KOVzYUYitI4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bHV4ZS5kaWdpdGFs/L21lZGlhLzIwMjQw/MjA4MTMxNjMyL2x1/eHVyeS13YXRjaC1i/cmFuZHMtYWxwaW5h/LWx1eGUtZGlnaXRh/bC03ODB4NTIwLmpw/Zw",
+      "thumbnails": ["Photos/vintage1.jpg", "Photos/vintage2.jpg", "Photos/vintage3.jpg", "Photos/vintage4.jpg", "Photos/vintage5.jpg"],
+      "description": "Drawing inspiration from the golden age of watchmaking, the Vintage Series combines historical aesthetics with modern engineering excellence.",
+      "specifications": [
+        "Movement: Hand-wound mechanical",
+        "Case: 18K Yellow Gold, 38mm",
+        "Crystal: Box-shaped sapphire",
+        "Water Resistance: 50m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Vintage-Style Presentation Box",
+        "Limited Edition Certificate",
+        "5-Year Warranty Card"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Specialized vintage service",
+        "support": "Expert consultation service"
+      }
+    },
+    "col3": {
+      "name": "Vintage Series",
+      "subtitle": "A Tribute to Timeless Elegance",
+      "price": "$15,200",
+      "mainImage": "https://imgs.search.brave.com/Gtl6AMJTOE68og2irDmzurwuCxuc2oM2u29OtsLGxqI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Ym9ic3dhdGNoZXMu/Y29tL3JvbGV4LWJs/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjIvMDkvMjBKTTIz/ODEtMi1FZGl0LTEw/MjR4NjgzLmpwZw",
+      "thumbnails": ["Photos/vintage1.jpg", "Photos/vintage2.jpg", "Photos/vintage3.jpg", "Photos/vintage4.jpg", "Photos/vintage5.jpg"],
+      "description": "Drawing inspiration from the golden age of watchmaking, the Vintage Series combines historical aesthetics with modern engineering excellence.",
+      "specifications": [
+        "Movement: Hand-wound mechanical",
+        "Case: 18K Yellow Gold, 38mm",
+        "Crystal: Box-shaped sapphire",
+        "Water Resistance: 50m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Vintage-Style Presentation Box",
+        "Limited Edition Certificate",
+        "5-Year Warranty Card"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Specialized vintage service",
+        "support": "Expert consultation service"
+      }
+    },
+    "col4": {
+      "name": "Vintage Series",
+      "subtitle": "A Tribute to Timeless Elegance",
+      "price": "$15,200",
+      "mainImage": "https://imgs.search.brave.com/2Q4FemthC5TVXUv1m40Orsaz2I0ms3lyg0laqOwiLS0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Ym9ic3dhdGNoZXMu/Y29tL3JvbGV4LWJs/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjIvMDkvQnJlaXRs/aW5nXzIwSk0xNjAz/LUVkaXQtMi0xMDI0/eDY4My5qcGc",
+      "thumbnails": ["Photos/vintage1.jpg", "Photos/vintage2.jpg", "Photos/vintage3.jpg", "Photos/vintage4.jpg", "Photos/vintage5.jpg"],
+      "description": "Drawing inspiration from the golden age of watchmaking, the Vintage Series combines historical aesthetics with modern engineering excellence.",
+      "specifications": [
+        "Movement: Hand-wound mechanical",
+        "Case: 18K Yellow Gold, 38mm",
+        "Crystal: Box-shaped sapphire",
+        "Water Resistance: 50m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Vintage-Style Presentation Box",
+        "Limited Edition Certificate",
+        "5-Year Warranty Card"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Specialized vintage service",
+        "support": "Expert consultation service"
+      }
+    },
+    "col5": {
+      "name": "Vintage Series",
+      "subtitle": "A Tribute to Timeless Elegance",
+      "price": "$15,200",
+      "mainImage": "https://imgs.search.brave.com/josX_gkd8SsbN81ezsjbigrjHzRJXAWjRHSDSo_9_oo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzAy/NzgvOTcyMy8zNTAx/L2ZpbGVzLzE0LUds/YXNodXR0ZS1Pcmln/aW5hbC1CcmFuZHMu/anBnP3Y9MTY1MDk4/MjczNg",
+      "thumbnails": ["Photos/vintage1.jpg", "Photos/vintage2.jpg", "Photos/vintage3.jpg", "Photos/vintage4.jpg", "Photos/vintage5.jpg"],
+      "description": "Drawing inspiration from the golden age of watchmaking, the Vintage Series combines historical aesthetics with modern engineering excellence.",
+      "specifications": [
+        "Movement: Hand-wound mechanical",
+        "Case: 18K Yellow Gold, 38mm",
+        "Crystal: Box-shaped sapphire",
+        "Water Resistance: 50m"
+      ],
+      "documentation": [
+        "Certificate of Authenticity",
+        "Vintage-Style Presentation Box",
+        "Limited Edition Certificate",
+        "5-Year Warranty Card"
+      ],
+      "aftercare": {
+        "warranty": "5-year international warranty",
+        "service": "Specialized vintage service",
+        "support": "Expert consultation service"
+      }
+    },
+
+    "ex1": {
+      "name": "Limited Edition Gold",
+      "subtitle": "Exclusivity Redefined",
+      "price": "$45,000",
+      "mainImage": "https://imgs.search.brave.com/Q4dG9t93Gl5n-sGaoOlyrsEq-qm88gjYi6Jsn7PdXeU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzAy/NzgvOTcyMy8zNTAx/L2ZpbGVzL1VseXNz/ZS1OYXJkaW4tRnJl/YWstT25lLTJfNTZm/ZDM0NmQtMTVlNy00/MTRjLTlmYmQtNWYz/YmM5NDViN2M2Lmpw/Zz92PTE3MDAxNDcw/NTE",
+      "thumbnails": ["Photos/limited1.jpg", "Photos/limited2.jpg", "Photos/limited3.jpg", "Photos/limited4.jpg", "Photos/limited5.jpg"],
+      "description": "Limited to just 50 pieces worldwide, this extraordinary timepiece showcases the pinnacle of our craftsmanship with its unique complications and precious materials.",
+      "specifications": [
+        "Movement: Perpetual calendar with moonphase",
+        "Case: 18K Rose Gold with diamonds",
+        "Crystal: Scratch-resistant sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Numbered Certificate of Authenticity",
+        "Luxury Presentation Box",
+        "Limited Edition Plaque",
+        "10-Year Warranty",
+        "Personal Concierge Card"
+      ],
+      "aftercare": {
+        "warranty": "10-year extended warranty",
+        "service": "Priority service program",
+        "support": "VIP concierge service"
+      }
+    },
+    "ex2": {
+      "name": "Limited Edition Gold",
+      "subtitle": "Exclusivity Redefined",
+      "price": "$45,000",
+      "mainImage": "https://imgs.search.brave.com/loRniNBj9xx88pRYQjnrjBmk-7zsQiE4c6vYcMSR6ok/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzAy/NzgvOTcyMy8zNTAx/L2ZpbGVzLzM3LUJy/ZW1vbnQtQnJhbmRz/LmpwZz92PTE2NTEw/MDU5MTU",
+      "thumbnails": ["Photos/limited1.jpg", "Photos/limited2.jpg", "Photos/limited3.jpg", "Photos/limited4.jpg", "Photos/limited5.jpg"],
+      "description": "Limited to just 50 pieces worldwide, this extraordinary timepiece showcases the pinnacle of our craftsmanship with its unique complications and precious materials.",
+      "specifications": [
+        "Movement: Perpetual calendar with moonphase",
+        "Case: 18K Rose Gold with diamonds",
+        "Crystal: Scratch-resistant sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Numbered Certificate of Authenticity",
+        "Luxury Presentation Box",
+        "Limited Edition Plaque",
+        "10-Year Warranty",
+        "Personal Concierge Card"
+      ],
+      "aftercare": {
+        "warranty": "10-year extended warranty",
+        "service": "Priority service program",
+        "support": "VIP concierge service"
+      }
+    },
+    "ex3": {
+      "name": "Limited Edition Gold",
+      "subtitle": "Exclusivity Redefined",
+      "price": "$45,000",
+      "mainImage": "https://imgs.search.brave.com/o8QOqGps6vtc93nbStYeFRMYvscunBICSBbXfrqhBS8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9icm9u/Y29sb3Iuc3dpc3Mv/YXNzZXRzL2ltZy9M/ZWFybi1hcnRpY2xl/cy9Ib3ctdG8tcGhv/dG9zL1RoZS11bHRp/bWF0ZS1ndWlkZS10/by1waG90b2dyYXBo/LWx1eHVyeS13YXRj/aGVzL19jb250ZW50/V2l0aFNoYXJlQmFy/MTMvVGhlLXVsdGlt/YXRlLWd1aWRlLXRv/LXBob3RvZ3JhcGgt/bHV4dXJ5LXdhdGNo/ZXMtMTgtcm9jazUu/anBn",
+      "thumbnails": ["Photos/limited1.jpg", "Photos/limited2.jpg", "Photos/limited3.jpg", "Photos/limited4.jpg", "Photos/limited5.jpg"],
+      "description": "Limited to just 50 pieces worldwide, this extraordinary timepiece showcases the pinnacle of our craftsmanship with its unique complications and precious materials.",
+      "specifications": [
+        "Movement: Perpetual calendar with moonphase",
+        "Case: 18K Rose Gold with diamonds",
+        "Crystal: Scratch-resistant sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Numbered Certificate of Authenticity",
+        "Luxury Presentation Box",
+        "Limited Edition Plaque",
+        "10-Year Warranty",
+        "Personal Concierge Card"
+      ],
+      "aftercare": {
+        "warranty": "10-year extended warranty",
+        "service": "Priority service program",
+        "support": "VIP concierge service"
+      }
+    },
+    "ex4": {
+      "name": "Limited Edition Gold",
+      "subtitle": "Exclusivity Redefined",
+      "price": "$45,000",
+      "mainImage": "https://imgs.search.brave.com/FEW0ocv3fhcNZ73IuNz2Dwr_ZXdqt0aBAiiuCkkYRCY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bHV4ZS5kaWdpdGFs/L21lZGlhLzIwMjQw/MjA4MTMxNTU1L2x1/eHVyeS13YXRjaC1i/cmFuZHMtdHVkb3It/bHV4ZS1kaWdpdGFs/LTc4MHg1MjAuanBn",
+      "thumbnails": ["Photos/limited1.jpg", "Photos/limited2.jpg", "Photos/limited3.jpg", "Photos/limited4.jpg", "Photos/limited5.jpg"],
+      "description": "Limited to just 50 pieces worldwide, this extraordinary timepiece showcases the pinnacle of our craftsmanship with its unique complications and precious materials.",
+      "specifications": [
+        "Movement: Perpetual calendar with moonphase",
+        "Case: 18K Rose Gold with diamonds",
+        "Crystal: Scratch-resistant sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Numbered Certificate of Authenticity",
+        "Luxury Presentation Box",
+        "Limited Edition Plaque",
+        "10-Year Warranty",
+        "Personal Concierge Card"
+      ],
+      "aftercare": {
+        "warranty": "10-year extended warranty",
+        "service": "Priority service program",
+        "support": "VIP concierge service"
+      }
+    },
+    "ex5": {
+      "name": "Limited Edition Gold",
+      "subtitle": "Exclusivity Redefined",
+      "price": "$45,000",
+      "mainImage": "https://imgs.search.brave.com/jxGLa-rnorLLsB2AyurNZx2XcRN8xUnv4qtMX_wmZRw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzAy/NzgvOTcyMy8zNTAx/L2ZpbGVzL1Bhcm1p/Z2lhbmktRmxldXJp/ZXItVG9uZGEtUEYt/R01ULTJfYWRmYzk3/MzQtMjI5NS00YjZh/LWJhYWUtOTllNDQ0/ODlhNGVkLmpwZz92/PTE3MDAxNDkzMzc",
+      "thumbnails": ["Photos/limited1.jpg", "Photos/limited2.jpg", "Photos/limited3.jpg", "Photos/limited4.jpg", "Photos/limited5.jpg"],
+      "description": "Limited to just 50 pieces worldwide, this extraordinary timepiece showcases the pinnacle of our craftsmanship with its unique complications and precious materials.",
+      "specifications": [
+        "Movement: Perpetual calendar with moonphase",
+        "Case: 18K Rose Gold with diamonds",
+        "Crystal: Scratch-resistant sapphire",
+        "Water Resistance: 30m"
+      ],
+      "documentation": [
+        "Numbered Certificate of Authenticity",
+        "Luxury Presentation Box",
+        "Limited Edition Plaque",
+        "10-Year Warranty",
+        "Personal Concierge Card"
+      ],
+      "aftercare": {
+        "warranty": "10-year extended warranty",
+        "service": "Priority service program",
+        "support": "VIP concierge service"
+      }
+    }
+  }
+}

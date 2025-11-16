@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'My Soul';
+    src: url('MySoul-Regular.eot');
+    src: local('My Soul Regular'), local('MySoul-Regular'),
+        url('MySoul-Regular.eot?#iefix') format('embedded-opentype'),
+        url('MySoul-Regular.woff2') format('woff2'),
+        url('MySoul-Regular.woff') format('woff'),
+        url('MySoul-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Mail</title>
+    <link rel="stylesheet" href="/Login style.css">
+</head>
+<body>
+
+    <a href="/settings" class="menu">&#9776;</a>
+
+    <div class="overlay">
+        <div class="logo">⌘</div>
+        <h2>Login to Mail</h2>
+        <form id="loginForm">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your Email Address" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p class="terms">
+            By logging in, you agree to the 
+            <a href="#">Privacy Policy</a> and 
+            <a href="#">Terms of services</a> of Heure Haute
+        </p>
+        <p style="text-align: center; margin-top: 15px;">
+            Don't have an account? <a href="/signup" style="color: #d4af37;">Sign up here</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('userId', email);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    alert('Logged in successfully!');
+                    window.location.href = '/';
+                } else {
+                    alert('Login failed: ' + data.message);
+                }
+            } catch (error) {
+                alert('Error logging in: ' + error.message);
+            }
+        });
+    </script>
+
+</body>
+</html>

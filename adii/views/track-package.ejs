@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Package - Heure Haute</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .menu-icon {
+            font-size: 2rem;
+            color: #d4af37;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            margin-top: 80px;
+        }
+
+        .track-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 60px 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .track-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .track-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.05rem;
+            font-family: 'Cormorant Garamond', serif;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .track-button {
+            width: 100%;
+            padding: 18px;
+            background: #d4af37;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .track-button:hover {
+            background: rgba(212, 175, 55, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .track-button:active {
+            transform: translateY(0);
+        }
+
+        .tracking-info {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .tracking-info strong {
+            color: #d4af37;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-link a {
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        .track-result {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            display: none;
+        }
+
+        .track-result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .status-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 1rem;
+        }
+
+        .status-line:last-child {
+            border-bottom: none;
+        }
+
+        .status-label {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .status-value {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .track-section {
+                padding: 40px 25px;
+            }
+
+            .track-section h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                margin-top: 70px;
+            }
+
+            .form-label {
+                font-size: 1rem;
+            }
+
+            .form-input {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/settings" class="menu-link">
+            <div class="menu-icon">⚙️</div>
+        </a>
+        <a href="/" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="/Photos/Untitled_design-removebg-preview.png" alt="Logo" class="logo-img">
+        </a>
+    </header>
+
+    <div class="container">
+        <section class="track-section">
+            <h1>Track Package</h1>
+            <p class="track-subtitle">Enter your order ID to track your luxury timepiece</p>
+
+            <form id="trackForm">
+                <div class="form-group">
+                    <label for="orderId" class="form-label">Order ID</label>
+                    <input 
+                        type="text" 
+                        id="orderId" 
+                        class="form-input" 
+                        placeholder="e.g., ORD-1234567890-ABC123"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="track-button">Track Order</button>
+            </form>
+
+            <div class="tracking-info">
+                <strong>📍 Tracking Updates:</strong><br>
+                Your order will show status as:<br>
+                • <strong>Processing</strong> - Order is being prepared<br>
+                • <strong>Shipped</strong> - Package is on its way<br>
+                • <strong>Out for Delivery</strong> - Final delivery stage<br>
+                • <strong>Delivered</strong> - Successfully received
+            </div>
+
+            <div id="trackResult" class="track-result">
+                <div class="result-header">📦 Package Status</div>
+                <div class="status-line">
+                    <span class="status-label">Order ID</span>
+                    <span class="status-value" id="resultOrderId">---</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">Current Status</span>
+                    <span class="status-value" id="resultStatus">Processing</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">Estimated Arrival</span>
+                    <span class="status-value" id="resultDelivery">5-7 Days</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">Last Update</span>
+                    <span class="status-value" id="resultUpdate">Just now</span>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="/catalogue">← Back to Catalogue</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('trackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const orderId = document.getElementById('orderId').value.trim();
+
+            if (!orderId) {
+                alert('Please enter an Order ID');
+                return;
+            }
+
+            // Display tracking result
+            document.getElementById('resultOrderId').textContent = orderId;
+            document.getElementById('trackResult').classList.add('show');
+
+            // Simulate different statuses based on order ID
+            const statuses = ['Processing', 'Shipped', 'Out for Delivery', 'Delivered'];
+            const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+            document.getElementById('resultStatus').textContent = randomStatus;
+
+            // Show success message
+            alert(`Tracking details for Order: ${orderId}\n\nCurrent Status: ${randomStatus}\n\nYou will receive email updates for each status change.`);
+        });
+
+        // Auto-fill order ID if coming from order confirmation page
+        document.addEventListener('DOMContentLoaded', function() {
+            const lastOrderId = localStorage.getItem('lastOrderId');
+            if (lastOrderId) {
+                document.getElementById('orderId').value = lastOrderId;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue</title>
+    <link rel="stylesheet" href="/Catalogue style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/settings" class="menu-link">
+                <div id="ui_ma" class="menu-icon">&#9776;</div>
+                <div id="arin">
+                    <img src="/Photos/Untitled_design-removebg-preview.png" alt="Heure Haute Logo"/>
+                </div>
+            </a>
+            <div class="cart-icon">
+                <a href="/cart">
+                    <span class="cart-count">0</span>
+                    🛒
+                </a>
+            </div>
+            <div id="userGreeting" style="text-align: right; margin-top: 10px; font-size: 14px; color: #999;"></div>
+        </header>
+
+        <main>
+            <h1 class="catalogue-title">CATALOGUE</h1>
+            <div id="product-sections"></div>
+        </main>
+
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script>
+        let cart = {};
+        let userId = localStorage.getItem('userId') || 'guest-' + Date.now();
+        localStorage.setItem('userId', userId);
+        
+        // Display user greeting
+        function displayUserGreeting() {
+            const userGreeting = document.getElementById('userGreeting');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userEmail = localStorage.getItem('userId');
+            
+            if (isLoggedIn && userEmail) {
+                userGreeting.innerHTML = `Welcome, <strong>${userEmail}</strong> | <a href="/login" onclick="logout(event)" style="color: #d4af37; text-decoration: none;">Logout</a>`;
+            } else {
+                userGreeting.innerHTML = `<a href="/login" style="color: #d4af37; text-decoration: none;">Login / Sign Up</a>`;
+            }
+        }
+
+        function logout(e) {
+            e.preventDefault();
+            localStorage.removeItem('userId');
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = '/';
+        }
+        
+        function updateCartCount() {
+            const count = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+            document.querySelector('.cart-count').textContent = count;
+        }
+
+        async function loadProducts() {
+            try {
+                const response = await fetch('/api/products');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const container = document.getElementById('product-sections');
+                    
+                    // Group products by category
+                    const categories = {};
+                    data.data.forEach(product => {
+                        if (!categories[product.category]) {
+                            categories[product.category] = [];
+                        }
+                        categories[product.category].push(product);
+                    });
+
+                    // Create sections for each category
+                    Object.entries(categories).forEach(([categoryKey, products]) => {
+                        const section = createSection(categoryKey, products);
+                        container.appendChild(section);
+                    });
+
+                    updateCartCount();
+                }
+            } catch (error) {
+                handleLoadError(error);
+            }
+        }
+
+        function createSection(categoryName, products) {
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = `
+                <div class="section-header">
+                    <h2 class="section-title">${categoryName.toUpperCase()}</h2>
+                </div>
+                <div class="product-grid">
+                    ${products.map(product => `
+                        <div class="product-item">
+                            <div class="product-image">
+                                <img src="${product.image}" 
+                                     alt="${product.name}"
+                                     loading="lazy"
+                                     onerror="this.onerror=null; this.src='/Photos/placeholder.jpg';">
+                            </div>
+                            <span class="product-name">${product.name}</span>
+                            <div class="product-controls">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn minus" onclick="updateQuantity('${product._id}', 'decrease')">-</button>
+                                    <span class="quantity" id="quantity-${product._id}">${cart[product._id] || 0}</span>
+                                    <button class="quantity-btn plus" onclick="updateQuantity('${product._id}', 'increase')">+</button>
+                                </div>
+                                <button class="view-details" onclick="window.location.href='/product/${product._id}'">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            return section;
+        }
+
+        function updateQuantity(productId, action) {
+            if (!cart[productId]) {
+                cart[productId] = 0;
+            }
+
+            if (action === 'increase') {
+                cart[productId]++;
+                showNotification('Product added to cart');
+                
+                // Save to MongoDB
+                fetch('/api/cart/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId, productId, quantity: 1 })
+                });
+            } else if (action === 'decrease' && cart[productId] > 0) {
+                cart[productId]--;
+                showNotification('Product removed from cart');
+                
+                if (cart[productId] === 0) {
+                    delete cart[productId];
+                    // Remove from MongoDB
+                    fetch('/api/cart/remove', {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ userId, productId })
+                    });
+                } else {
+                    // Update quantity in MongoDB
+                    fetch('/api/cart/update', {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ userId, productId, quantity: cart[productId] })
+                    });
+                }
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            const quantityElement = document.getElementById(`quantity-${productId}`);
+            if (quantityElement) {
+                quantityElement.textContent = cart[productId] || 0;
+            }
+            
+            updateCartCount();
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function handleLoadError(error) {
+            const container = document.getElementById('product-sections');
+            container.innerHTML = `
+                <div class="error-message">
+                    <p>Sorry, we couldn't load the products. Please try again later.</p>
+                    <button onclick="loadProducts()">Retry</button>
+                </div>
+            `;
+            console.error('Error loading products:', error);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            displayUserGreeting();
+            loadProducts();
+        });
+    </script>
+</body>
+</html>

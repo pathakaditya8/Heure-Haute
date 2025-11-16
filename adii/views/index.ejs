@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heure Haute - When Time Becomes an Art</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=My+Soul&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <a href="/settings">
+      <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div id="arin">
+        <a href="/catalogue">
+          <img src="/Photos/Untitled_design-removebg-preview.png" alt="Heure Haute" />
+        </a>
+      </div>
+      <video class="hero-video" poster="/assets/posters/hero-poster.jpg" autoplay loop muted playsinline>
+        <source src="/Videos/Luxury_Watch_Commercial_Video_Generation.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section class="content-section">
+      <div class="text-content">
+        <h2 id='lo' style="font-size: 105px;">Heure Haute</h2>
+        <p id='so'>When time becomes an art</p>
+      </div>
+      <div class="image-content">
+        <video poster="/assets/posters/exploded-poster.jpg" autoplay loop muted playsinline>
+          <source src="/Videos/pindown.io_@davidgardners_1757801435.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="content-section legacy">
+      <div class="text-content">
+        <h2 id="lo">A Legacy of Excellence</h2>
+        <p id='so'>
+          Our story is a homage to the master artisans who have shaped the
+          world of watchmaking. We do not build a legacy with our hands, but
+          rather, we honor theirs. We immerse ourselves in the history of each
+          piece, tracing its origins, understanding its journey, and
+          uncovering the narratives that make it unique. Our collection is a
+          curated gallery of these legacies—a testament to the skill, vision,
+          and dedication that have defined generations of watchmaking
+          brilliance.
+        </p>
+      </div>
+      <div class="image-content">
+        <video poster="/assets/posters/exploded-poster.jpg" autoplay loop muted playsinline>
+          <source src="/Videos/pindown.io_@evo0902_1757833296.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="content-section reverse">
+      <div class="text-content">
+        <pre><h2 id='lo'>   The  Curation:  A 
+   Gallery   of 
+   Masterpieces</h2></pre>
+        <p id="so">
+          Our collection is not born from inventory; it is born from an
+          obsession with excellence. We believe that true luxury lies in the
+          art of selection. Each timepiece you see here has been meticulously
+          chosen, not merely for its brand name, but for its unique story, its
+          technical ingenuity, and its enduring artistry. We are not just a
+          marketplace; we are a gallery, and our curation is the exhibition of
+          a lifetime of passion for horology.
+        </p>
+      </div>
+      <div class="pathak">
+        <video id="dhruv" poster="/Photos/cur.png"></video>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="text-content">
+        <h2 id="lo">The Beginning of a Journey</h2>
+        <p id="so">
+          Our story is a homage to the master artisans who have shaped the
+          world of watchmaking. We do not build a legacy with our hands, but
+          rather, we honor theirs. We immerse ourselves in the history of each
+          piece, tracing its origins, understanding its journey, and
+          uncovering the narratives that make it unique. Our collection is a
+          curated gallery of these legacies—a testament to the skill, vision,
+          and dedication that have defined generations of watchmaking
+          brilliance.
+        </p>
+      </div>
+      <div class="image-content">
+        <video poster="/assets/posters/exploded-poster.jpg" autoplay loop muted playsinline>
+          <source src="/Videos/PinDown.io_@floragems_1758067512.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="content-section reverse">
+      <div class="text-content">
+        <pre><h2 id="yo">Contact Us</h2></pre>
+        <h3 id="so">
+          Email: heurehaute@gmail.com<br>
+          Contact: +91 8168510539 <br>
+          Landline: +91 93501507897
+        </h3>
+      </div>
+      <div class="image-content">
+        <video poster="/Photos/image 8.png" autoplay loop muted playsinline>
+          <source src="/assets/videos/gears-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Load products from API
+    async function loadProducts() {
+      try {
+        const response = await fetch('/api/products');
+        const data = await response.json();
+        
+        if (data.success) {
+          displayProducts(data.data);
+        }
+      } catch (error) {
+        console.error('Error loading products:', error);
+      }
+    }
+
+    function displayProducts(products) {
+      const container = document.getElementById('productsContainer');
+      if (container) {
+        container.innerHTML = products.map(product => `
+          <div class="product-card">
+            <img src="${product.image}" alt="${product.name}" />
+            <h3>${product.name}</h3>
+            <p class="category">${product.category}</p>
+            <p class="price">₹${product.price}</p>
+            <button onclick="addToCart('${product._id}', '${product.name}', ${product.price})">Add to Cart</button>
+          </div>
+        `).join('');
+      }
+    }
+
+    function addToCart(productId, name, price) {
+      const userId = localStorage.getItem('userId') || 'guest-' + Date.now();
+      localStorage.setItem('userId', userId);
+
+      fetch('/api/cart/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, productId, quantity: 1 })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert(`${name} added to cart!`);
+        }
+      });
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
